@@ -1,0 +1,165 @@
+% ============================================================
+%  Title Page 模板 —— 期刊投稿用
+%  兼容 orcidlink 宏包，支持中文，面向中国学者
+%  编译：pdflatex → pdflatex → pdflatex
+% ============================================================
+\documentclass[12pt,a4paper]{article}
+
+% ---------- 宏包 ----------
+\usepackage[UTF8]{ctex}          % 中文支持（保留，用于中文注释和姓名）
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{orcidlink}           % ORCID 图标 + 超链接
+\hypersetup{colorlinks=true,urlcolor=orcidlogocol}
+
+% ---------- ORCID 快捷命令 ----------
+% 用法：\orcid{0000-0002-1825-0097}
+\newcommand{\orcid}[1]{\orcidlink{#1}}
+
+% ============================================================
+%  标题
+%  要求：简洁、信息充分；避免缩写和公式（公认的如 DNA 除外）
+% ============================================================
+\newcommand{\papertitle}{%
+  Your Article Title Here%                         <-- 替换为你的标题
+}
+
+% ============================================================
+%  作者条目（无脚注版本）
+%  用法：\authoritem{姓名全称}{单位字母}{ORCID}{标记}
+%
+%  参数说明：
+%    #1 = 姓名全称。建议 "Ming Li (李铭)"，姓和名不拆开
+%    #2 = 单位上标字母，如 a 或 a,b（与下方 \affiliation 对应）
+%    #3 = ORCID（16 位数字），不需要则留空 {}
+%    #4 = 额外标记（仅作上标显示，不产生脚注）：
+%         *   = 通讯作者（页面下方统一声明）
+%         \S  = 现址/永久地址（页面下方统一声明）
+%
+%  示例：
+%    \authoritem{Ming Li (李铭)}{a}{0000-0001-2345-6789}{*}
+%    \authoritem{Wei Zhang}{a}{}{}
+%    \authoritem{John Smith}{b}{0000-0003-4567-8901}{\S}
+% ============================================================
+\newcommand{\authoritem}[4]{%
+  \textbf{#1}%
+  \if\relax\detokenize{#2}\relax\else\textsuperscript{#2}\fi
+  \if\relax\detokenize{#4}\relax\else\textsuperscript{,#4}\fi
+  \if\relax\detokenize{#3}\relax\else\ \orcid{#3}\fi
+}
+
+% ---------- 内部存储命令 ----------
+% 以下命令仅存储信息，不产生任何输出，供页面下方统一显示
+\newcommand{\tpcorremail}{}
+\newcommand{\corrauthor}[1]{\renewcommand{\tpcorremail}{#1}}
+
+\newcommand{\tppresentaddr}{}
+\newcommand{\presentaddress}[1]{\renewcommand{\tppresentaddr}{#1}}
+
+% ============================================================
+%  单位条目
+%  用法：\affiliation{字母}{完整地址}
+%
+%  要求：
+%   - 完整邮寄地址，必须包含国家名
+%   - 上标字母必须与 \authoritem 中的 #2 参数一致
+%
+%  示例：
+%    \affiliation{a}{School of Materials Science and Engineering,
+%                    Tsinghua University, Beijing 100084, China}
+%    \affiliation{b}{Department of Engineering Science,
+%                    University of Oxford, Oxford OX1 3PJ, UK}
+% ============================================================
+\newcommand{\affiliation}[2]{%
+  \textsuperscript{#1}\,#2\par\vspace{2pt}%
+}
+
+% ============================================================
+%  组装文档
+% ============================================================
+\title{%
+  \vspace{-1.5cm}%
+  {\LARGE\bfseries\papertitle}%
+}
+
+% ---- 作者列表（按投稿系统顺序排列） ----
+\author{%
+  % 作者 1：通讯作者
+  \authoritem{San Zhang (张三)}{a}{0000-0001-2345-6789}{*}% <-- 替换
+  \corrauthor{san.zhang@example.edu.cn}%                    <-- 替换邮箱
+  \\[4pt]
+  % 作者 2：同单位，无 ORCID
+  \authoritem{Si Li (李四)}{a}{}{}%                          <-- 替换
+  \\[4pt]
+  % 作者 3：不同单位，有 ORCID，已调离
+  \authoritem{Wu Wang (王五)}{b}{0000-0003-4567-8901}{\S}%    <-- 替换
+  \presentaddress{Department of Materials Science and Engineering,
+                  MIT, Cambridge, MA 02139, USA}%            <-- 替换/删除
+  \\[4pt]
+  % 作者 4：归属两个单位
+  \authoritem{Liu Zhao (赵六)}{a,b}{0000-0004-5678-9012}{}%  <-- 替换
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% ---------- 单位列表 ----------
+\begin{center}
+\small
+\affiliation{a}{%
+  Department/School, University/Institute Name,
+  City, Postal Code, Country%                     <-- 替换为完整地址
+}
+
+\affiliation{b}{%
+  Another Department, Another University/Institute,
+  City, Postal Code, Country%                     <-- 替换为完整地址
+}
+\end{center}
+
+\bigskip
+
+% ---------- 通讯作者（统一在此声明，不产生脚注） ----------
+\ifx\tpcorremail\empty\else
+  \begin{center}
+  \small *\,Corresponding author: \texttt{\tpcorremail}
+  \end{center}
+\fi
+
+% ---------- 现址 / 永久地址（如有） ----------
+\ifx\tppresentaddr\empty\else
+  \begin{center}
+  \small \S\,Present/permanent address: \tppresentaddr
+  \end{center}
+\fi
+
+% ---- 摘要（按期刊要求决定是否放在这里） ----
+% \begin{abstract}
+% Your abstract text here...
+% \end{abstract}
+
+% ---- 关键词 ----
+% \noindent\textbf{Keywords:} keyword1; keyword2; keyword3; keyword4
+
+\end{document}
+
+% ============================================================
+%  使用清单（每次投稿前逐条检查）
+% ============================================================
+%
+%  [ ] \papertitle         — 标题简洁，无未定义缩写
+%  [ ] \authoritem × N     — 作者顺序与投稿系统一致，拼写无误
+%  [ ] 中文姓名             — 英文拼写后加括号中文，如 "Ming Li (李铭)"
+%  [ ] 单位字母 a, b, c …  — 与 \affiliation{} 块一一对应
+%  [ ] \affiliation × N    — 完整邮寄地址，含国家名
+%  [ ] \corrauthor          — 通讯作者邮箱（页面下方显式声明，非脚注）
+%  [ ] \presentaddress      — 仅作者已调离/访学期间使用，原单位保持为主单位
+%  [ ] ORCID               — 16 位数字 ID，无则留空 {}
+%  [ ] 编译                 — pdflatex × 3
