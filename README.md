@@ -47,6 +47,11 @@ pdflatex title_page.tex
 │     Tel: ...                     │
 ├─────────────────────────────────┤
 │   § 现址/永久地址（如有）          │
+├─────────────────────────────────┤
+│   Declaration of competing       │
+│   interests（利益冲突声明）        │
+├─────────────────────────────────┤
+│   Funding sources（资助来源）      │
 └─────────────────────────────────┘
 ```
 
@@ -224,7 +229,77 @@ pdflatex title_page.tex
 
 ---
 
-### 6. 摘要与关键词（可选）
+### 6. 利益冲突声明（Declaration of Competing Interests）
+
+模板已预留注释块，取消注释即可使用，提供两种写法：
+
+**方式一：无利益冲突（大多数期刊适用）**
+
+```latex
+\begin{flushleft}
+\small
+\textbf{Declaration of competing interests}\\[2pt]
+The authors declare that they have no known competing financial interests
+or personal relationships that could have appeared to influence the work
+reported in this paper.
+\end{flushleft}
+```
+
+渲染效果：
+
+> **Declaration of competing interests**  
+> The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+**方式二：有具体利益冲突需披露**
+
+```latex
+\begin{flushleft}
+\small
+\textbf{Declaration of competing interests}\\[2pt]
+Author A has received research funding from Company X.
+Author B serves as a consultant for Company Y.
+Author C declares no competing interests.
+\end{flushleft}
+```
+
+---
+
+### 7. 资助来源（Funding Sources）
+
+模板已预留注释块，取消注释即可使用，提供两种写法：
+
+**方式一：有具体资助信息**
+
+```latex
+\begin{flushleft}
+\small
+\textbf{Funding sources}\\[2pt]
+Funding: This work was supported by the National Natural Science Foundation
+of China [grant numbers xxxx, yyyy]; the Bill \& Melinda Gates Foundation,
+Seattle, WA [grant number zzzz]; and the United States Institutes of Peace
+[grant number aaaa].
+\end{flushleft}
+```
+
+渲染效果：
+
+> **Funding sources**  
+> Funding: This work was supported by the National Natural Science Foundation of China [grant numbers xxxx, yyyy]; the Bill & Melinda Gates Foundation, Seattle, WA [grant number zzzz]; and the United States Institutes of Peace [grant number aaaa].
+
+**方式二：无资助**
+
+```latex
+\begin{flushleft}
+\small
+\textbf{Funding sources}\\[2pt]
+This research did not receive any specific grant from funding agencies in the
+public, commercial, or not-for-profit sectors.
+\end{flushleft}
+```
+
+---
+
+### 8. 摘要与关键词（可选）
 
 部分期刊要求将摘要和关键词放在标题页，模板已预留注释块，取消注释即可使用。
 
@@ -250,6 +325,8 @@ Your abstract text here...
 - [ ] `\affiliation × N` — 完整邮寄地址，含国家名
 - [ ] `\corrauthor` — 通讯作者姓名、单位、邮箱、联系电话（逐行显示）
 - [ ] `\presentaddress` — 仅作者已调离/访学期间使用，原单位保持为主单位
+- [ ] `Competing interests` — 取消对应注释，无冲突选方式一，有冲突选方式二
+- [ ] `Funding sources` — 取消对应注释，有资助选方式一，无资助选方式二
 - [ ] ORCID — 16 位数字 ID，无则留空 `{}`
 - [ ] 编译 — 双击 `compile.bat` 或手动 `pdflatex` × 3
 
