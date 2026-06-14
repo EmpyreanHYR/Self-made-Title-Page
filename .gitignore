@@ -69,37 +69,7 @@ pythontex-files-*/
 # Latexian
 TSWLatexianTemp*
 
-## Editors:
-# WinEdt
-*.bak
-*.sav
-
-# Texpad
-.texpadtmp
-
-# LyX
-*.lyx~
-
-# Kile
-*.backup
-
-# gummi
-.*.swp
-
-# KBibTeX
-*~[0-9]*
-
-# TeXnicCenter
-*.tps
-
-# auto folder when using emacs and auctex
-./auto/*
-*.el
-
-# expex forward references with \gathmark
-*- ex.bak
-
-# standalone packages
+# Standalone packages
 *.sta
 
 # Makeindex log files
@@ -108,82 +78,38 @@ TSWLatexianTemp*
 # hyperref
 *.brf
 
-# knitr
-*-concordance.tex
-
-# tikz libraries
-*.dpth
-*.md5
-*.auxlock
-
-# todonotes
-*.tdo
-
-# vhistory
-*.hst
-*.ver
-
-# easy-todo
-*.lod
-
-# xcolor
-*.xcp
-
-# xindy
-*.xdy
-
-# xypic precompiled matrices and target
-*.xyc
-*.xyd
-
-# endfloat
-*.ttt
-*.fff
-
-# Latexian
-TSWLatexianTemp*
-
-## Editors:
-# WinEdt
-*.bak
-*.sav
-
-# Texpad
-.texpadtmp
-
-# LyX
-*.lyx~
-
-# Kile
-*.backup
-
-# gummi
-.*.swp
-
-# KBibTeX
-*~[0-9]*
-
-# TeXnicCenter
-*.tps
-
-# auto folder when using emacs and auctex
-./auto/*
-*.el
-
-# expex forward references with \gathmark
-*- ex.bak
-
-# standalone packages
-*.sta
-
-# Makeindex log files
-*.lpz
-
-# hyperref
-*.brf
-
-# Ignore PDF output (uncomment if desired)
+# PDF output
 # *.pdf
+
+## Editors
+# WinEdt
+*.bak
+*.sav
+
+# Texpad
+.texpadtmp
+
+# LyX
+*.lyx~
+
+# Kile
+*.backup
+
+# gummi
+.*.swp
+
+# KBibTeX
+*~[0-9]*
+
+# TeXnicCenter
+*.tps
+
+# Emacs + AUCTeX
+./auto/*
+*.el
+
+# expex forward references with \gathmark
+*- ex.bak
 
 # Project specific
 .codegraph/

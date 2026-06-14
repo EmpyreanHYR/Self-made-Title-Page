@@ -31,6 +31,7 @@
 % ============================================================
 %  作者条目（无脚注版本）
 %  用法：\authoritem[头衔]{姓名全称}{单位字母}{ORCID}{标记}
+%        \authoremail{邮箱}  （可选，同行显示）
 %
 %  参数说明：
 %    #1 = （可选）头衔，如 Prof.、Dr.，不需要则留空 []
@@ -43,8 +44,9 @@
 %
 %  示例：
 %    \authoritem[Prof.]{Ming Li (李铭)}{a}{0000-0001-2345-6789}{*}
+%    \authoremail{liming@tsinghua.edu.cn}
 %    \authoritem{Wei Zhang}{a}{}{}
-%    \authoritem[Dr.]{John Smith}{b}{0000-0003-4567-8901}{\S}
+%    \authoremail{weizhang@example.edu.cn}
 % ============================================================
 \newcommand{\authoritem}[5][]{%
   \if\relax\detokenize{#1}\relax\else#1\,\fi
@@ -53,6 +55,7 @@
   \if\relax\detokenize{#5}\relax\else\textsuperscript{,#5}\fi
   \if\relax\detokenize{#4}\relax\else\ \orcid{#4}\fi
 }
+\newcommand{\authoremail}[1]{\quad\texttt{#1}}
 
 % ---------- 内部存储命令 ----------
 % 以下命令仅存储信息，不产生任何输出，供页面下方统一显示
@@ -104,6 +107,7 @@
 \begin{flushleft}
   % 作者 1：通讯作者（可选头衔：Prof. / Dr. 等，不需要则删掉 [Prof.]）
   \authoritem[Prof.]{San Zhang (张三)}{a}{0000-0001-2345-6789}{*}% <-- 替换
+  \authoremail{san.zhang@example.edu.cn}%                    <-- 替换邮箱
   \corrauthor%
     {San Zhang (张三)}%                              <-- 通讯作者姓名
     {Department/School, University Name, City, Country}%  <-- 通讯作者单位
@@ -112,14 +116,17 @@
   \\[4pt]
   % 作者 2：同单位，无 ORCID，无头衔
   \authoritem{Si Li (李四)}{a}{}{}%                          <-- 替换
+  \authoremail{si.li@example.edu.cn}%                       <-- 替换邮箱
   \\[4pt]
   % 作者 3：不同单位，有 ORCID，已调离
   \authoritem[Dr.]{Wu Wang (王五)}{b}{0000-0003-4567-8901}{\S}%    <-- 替换
+  \authoremail{wu.wang@example.edu.cn}%                     <-- 替换邮箱
   \presentaddress{Department of Materials Science and Engineering,
                   MIT, Cambridge, MA 02139, USA}%            <-- 替换/删除
   \\[4pt]
   % 作者 4：归属两个单位
   \authoritem{Liu Zhao (赵六)}{a,b}{0000-0004-5678-9012}{}%  <-- 替换
+  \authoremail{liu.zhao@example.edu.cn}%                    <-- 替换邮箱
 \end{flushleft}
 
 % ---------- 单位列表（左对齐） ----------
@@ -161,13 +168,13 @@
 %  方式一：标准声明（无利益冲突，大多数期刊适用）
 %  取消下方注释即可使用，或根据期刊要求自行修改措辞
 % -------------------------------------------------------
-\begin{flushleft}
-\small
-\textbf{Declaration of competing interests}\\[2pt]
-The authors declare that they have no known competing financial interests
-or personal relationships that could have appeared to influence the work
-reported in this paper.
-\end{flushleft}
+%\begin{flushleft}
+%\small
+%\textbf{Declaration of competing interests}\\[2pt]
+%The authors declare that they have no known competing financial interests
+%or personal relationships that could have appeared to influence the work
+%reported in this paper.
+%\end{flushleft}
 
 %  方式二：需要披露具体利益冲突时，替换上方内容为：
 % -------------------------------------------------------
@@ -194,12 +201,12 @@ reported in this paper.
 
 %  方式二：无资助时的标准声明
 % -------------------------------------------------------
-\begin{flushleft}
-\small
-\textbf{Funding sources}\\[2pt]
-This research did not receive any specific grant from funding agencies in the
-public, commercial, or not-for-profit sectors.
-\end{flushleft}
+%\begin{flushleft}
+%\small
+%\textbf{Funding sources}\\[2pt]
+%This research did not receive any specific grant from funding agencies in the
+%public, commercial, or not-for-profit sectors.
+%\end{flushleft}
 
 
 

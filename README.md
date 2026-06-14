@@ -7,12 +7,24 @@
 **方式一：双击脚本（推荐）**
 
 ```
+# Windows
 双击 compile.bat
+
+# macOS / Linux
+chmod +x compile.sh && ./compile.sh
 ```
 
 自动编译 3 次，清理辅助文件（`.aux`、`.log`、`.out` 等），并打开生成的 PDF。
 
-**方式二：手动编译**
+**方式二：latexmk（自动管理编译次数）**
+
+```bash
+latexmk title_page.tex
+```
+
+> 需要安装 `latexmk`（TeX Live / MiKTeX 自带）。已提供 `.latexmkrc` 配置。
+
+**方式三：手动编译**
 
 ```bash
 pdflatex title_page.tex
@@ -325,10 +337,10 @@ Your abstract text here...
 - [ ] `\affiliation × N` — 完整邮寄地址，含国家名
 - [ ] `\corrauthor` — 通讯作者姓名、单位、邮箱、联系电话（逐行显示）
 - [ ] `\presentaddress` — 仅作者已调离/访学期间使用，原单位保持为主单位
-- [ ] `Competing interests` — 取消对应注释，无冲突选方式一，有冲突选方式二
-- [ ] `Funding sources` — 取消对应注释，有资助选方式一，无资助选方式二
+- [ ] `Competing interests` — 取消对应注释（默认已注释），无冲突选方式一，有冲突选方式二
+- [ ] `Funding sources` — 取消对应注释（默认已注释），有资助选方式一，无资助选方式二
 - [ ] ORCID — 16 位数字 ID，无则留空 `{}`
-- [ ] 编译 — 双击 `compile.bat` 或手动 `pdflatex` × 3
+- [ ] 编译 — 双击 `compile.bat`（Windows）/ `./compile.sh`（macOS/Linux）或手动 `pdflatex` × 3
 
 ---
 
