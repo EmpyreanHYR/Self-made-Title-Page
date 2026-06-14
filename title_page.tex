@@ -61,14 +61,14 @@
 \newcommand{\tpcorremail}{}
 \newcommand{\tpcorrphone}{}
 \newcommand{\corrauthor}[4]{%
-  \renewcommand{\tpcorrname}{#1}%
-  \renewcommand{\tpcorraffil}{#2}%
-  \renewcommand{\tpcorremail}{#3}%
-  \renewcommand{\tpcorrphone}{#4}%
+  \gdef\tpcorrname{#1}%
+  \gdef\tpcorraffil{#2}%
+  \gdef\tpcorremail{#3}%
+  \gdef\tpcorrphone{#4}%
 }
 
 \newcommand{\tppresentaddr}{}
-\newcommand{\presentaddress}[1]{\renewcommand{\tppresentaddr}{#1}}
+\newcommand{\presentaddress}[1]{\gdef\tppresentaddr{#1}}
 
 % ============================================================
 %  单位条目
